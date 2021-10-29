@@ -19,7 +19,4 @@ Class WinApplication {
     SendAllNotification () {
         echo "Notification sent to all contacts for $($this.Name)"
     }
-    CleanupLogs () {
-        Remove-Item -Path $this.Logs -Filter "*.txt"
-    }
 }

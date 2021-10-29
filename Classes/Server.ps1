@@ -39,5 +39,8 @@ Class Server {
             get-nettcpconnection | where { ($_.State -eq "Listen") }
         } 
     }
+    CleanupLogs () {
+        Remove-Item -Path $this.Logs -Filter "*.txt"
+    }
 }
 
