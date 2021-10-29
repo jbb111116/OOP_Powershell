@@ -40,7 +40,9 @@ Class Server {
         } 
     }
     CleanupLogs () {
-        Remove-Item -Path $this.Logs -Filter "*.txt"
+        icm -cn $this.ServerName {
+            Remove-Item -Path $this.Logs -Filter "*.txt"
+        }
     }
 }
 
