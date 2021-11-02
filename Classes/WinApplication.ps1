@@ -10,8 +10,8 @@ Class WinApplication {
     [String[]] $Dependencies
     [String[]] $Logs
     
-    SendSmeNotification () {
-        echo "Notification sent to SMEs for $($this.Name)"
+    [String] SendSmeNotification () {
+        return "Notification sent to SMEs for $($this.Name)"
     }
     SendBusinessNotification () {
         echo "Notification sent to Business contacts for $($this.Name)"
@@ -20,3 +20,5 @@ Class WinApplication {
         echo "Notification sent to all contacts for $($this.Name)"
     }
 }
+$App = New-Object -TypeName WinApplication
+$App.SendSmeNotification()
