@@ -1,1 +1,4 @@
 Domain, ServerName, Ports, Application, BusinessID, WIPS, Pool, DataCenter, Core, BusinessServices
+Domain1, server1, "1800",App1, 00004, wip1.service1.com,3,datacenter1,H,"BusinessService1,BusinessService2,BusinessService3"
+Domain1, server2, "1800,8080",App2, 00005, wip1.service2.com,3,datacenter1,H,"BusinessService1,BusinessService2,BusinessService4"
+Domain2, server3, "8080",App3, 00006, wip1.service3.com,3,datacenter1,H,"BusinessService1,BusinessService2,BusinessService3,BusinessService4"

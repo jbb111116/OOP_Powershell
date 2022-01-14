@@ -20,5 +20,3 @@ Class WinApplication {
         echo "Notification sent to all contacts for $($this.Name)"
     }
 }
-$App = New-Object -TypeName WinApplication
-$App.SendSmeNotification()

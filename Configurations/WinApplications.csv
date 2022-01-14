@@ -1,1 +1,4 @@
 Name, AffectedBy, Affects, WindowsServiceName, DNS, AppType, SMEs, BusinessContacts, Dependencies, Logs
+Service1,Service2,"Service2,Service3",WinServiceName1,win.service1.com,,,,,
+Service2,Service1,"Service1,Service3",WinServiceName2,win.service2.com,,,,,
+Service3,"Service1,Service2",,WinServiceName3,win.Service3.com,,,,,

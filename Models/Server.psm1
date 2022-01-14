@@ -10,6 +10,7 @@ Class Server {
     [String[]] $BusinessServices
     [String] $Domain
     
+    
     # Works locally, need to test on remote servers
     [String[]] GetUsedSpacePercentage () {
         return icm -cn $this.ServerName {
@@ -21,23 +22,15 @@ Class Server {
             return $return
         }
     }
-    [String] GetServices () {
-        return icm -cn $this.ServerName -ArgumentList $this.BusinessServices {
-            param (
-                $apps = $this.BusinessServices
-            )
-            Get-Service -DisplayName $apps
-        }
+    [String[]] GetServices () {
+        return Get-Service -ComputerName $this.ServerName -DisplayName $this.BusinessServices
     }
     
     ######### Need to be tested #########
     StopServices () {
-        icm -cn $this.ServerName -ArgumentList $this.BusinessServices {
-            param (
-                $apps = $this.BusinessServices
-            )
-            Stop-Service -DisplayName $apps
-        }
+        $services = $this.GetServices()
+        $services.Stop()
+
     }
     StartServices () {
         icm -cn $this.ServerName -ArgumentList $this.BusinessServices {
@@ -70,12 +63,13 @@ Class Server {
             (104857600 * $availableMemory / $totalRam).ToString("#,0.0") + '%'
         }
     }
-    GetAvailableMemoryInMB () {
-        icm -cn $this.ServerName {
+    [String] GetAvailableMemoryInMB () {
+        return icm -cn $this.ServerName {
             $availableMemory = (Get-Counter '\Memory\Available MBytes').CounterSamples.CookedValue
             $availableMemory.ToString("N0") + 'MB'
         }
     }
+    [String] Test() {
+        return "this is a test"
+    }
 }
-$Server = New-Object -TypeName Server
-$Server.TestMethod()
